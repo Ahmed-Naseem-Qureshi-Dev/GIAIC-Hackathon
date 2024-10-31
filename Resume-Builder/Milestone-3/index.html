@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Resume Builder</title>
+</head>
+<body>
+    <!-- Loading Page -->
+    <div class="opener" id="opener">
+            <h2 data-text="Ahmedonix..." id="h2">Ahmedonix...</h2>
+    </div>
+
+    <!-- Main Page -->
+    <div class="main" id="main">
+            <Button id="info" class="button">Information</Button>
+            <Button id="preview" class="button">Preview</Button>
+        
+            <div class="generate hidden" id="generate">
+            <div class="container">
+            <div class="card " style="--clr: #0f0" id="first-card">
+
+                <form class="form " id="resumeForm">
+                    <div class="form_front ">
+                        <div class="form_details ">Personel Information</div>
+                        <label for="name"></label>
+                        <input placeholder="Name" class="input" type="text" id="name" required>
+                        <label for="email"></label>
+                        <input placeholder="Email" class="input" type="email" id="email" required>
+                        <label for="number"></label>
+                        <input type="text" class="input" id="number" required>
+                        <label for="profile-image"></label>
+                        <input type="file" class="input" id="profile-image" accept="*/*" >  
+                        <div class="form_details">Education</div>
+                        <label for="degree"></label>                  
+                        <input placeholder="Degree" id="degree" class="input" type="text" required>
+                        <label for="institution"></label>
+                        <input placeholder="Institution" id="institution" class="input" type="text" required>
+                        <label for="gradYear"></label>
+                        <input placeholder="Graduation Year" id="gradYear" class="input" type="number" required>
+                        <div class="form_details">Work Experience</div>
+                        <label for="jobTitle"></label>
+                        <input placeholder="Job Title" id="jobTitle" class="input" type="text" required>
+                        <label for="company"></label>
+                        <input placeholder="Company" id="company" class="input" type="text" required> 
+                        <label for="description"></label>
+                        <textarea placeholder="Job Description" id="description" class="input" type="text" required></textarea>
+                        <div class="form_details">Skills</div>
+                        <label for="skill"></label>
+                        <input placeholder="Skills (comma separated)" id="skill" class="input" type="text" required>
+                        <button class="btn" type="submit">Generate Resume</button>
+                        </div>
+                        </form>
+            </div>
+        </div>
+    </div>
+    <div class="hidden" id="look">
+        <div class="container ">
+            <div class="card " style="--clr: #0f0" id="second-card">
+                <div class="form">
+                    <div class="prev_front" id="prev-front">
+                        <div id="content">
+                        <img id="previewProfilePic" src="profile-pic.jpg" alt="Profile Picture">
+                        <h1 id="previewName" contenteditable="true">Ahmed Naseem Qureshi</h1> <!-- Made editable -->
+                        <p id="previewEmail" contenteditable="true">Email: ahmednq.dev@gmail.com</p>
+                        <h3>Education</h3>
+                        <p id="previewEducation" contenteditable="true">Bachelor's Degree in Computer Science - University A (2020)</p>
+                        <h3>Work Experience</h3>
+                <p id="previewWork" contenteditable="true">Software Engineer at Company X (2021-Present)</p>
+                <h3>Skills</h3>
+                <p id="previewSkills" contenteditable="true">JavaScript, TypeScript, Python</p>
+            </div>
+
+                </div>
+                    
+                </div>
+                </div>
+                </div>
+
+        </div>
+
+
+    </div>
+    </div>
+
+ 
+    <script src="script.js"></script>
+
+    <script>
+        let cards= document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.onmousemove = function(e){
+                let x = e.pageX - card.offsetLeft;
+                let y = e.pageY - card.offsetTop;
+
+                card.style.setProperty('--x', x + 'px');
+                card.style.setProperty('--y', y + 'px');
+            }
+        })
+
+        const injectCursorPosition = ({ clientX: x, clientY: y }) => {
+    document.documentElement.style.setProperty('--x', `${x}px`);
+    document.documentElement.style.setProperty('--y', `${y}px`);
+};
+
+// Event listener to update the spotlight position on cursor move
+document.getElementById('main').addEventListener('pointermove', injectCursorPosition);
+
+
+    </script>
+    
+</body>
+</html>
