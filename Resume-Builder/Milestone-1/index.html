@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Resume Builder</title>
+</head>
+<body>
+    <!-- Loading Page -->
+    <div class="opener" id="opener">
+            <h2 data-text="Ahmedonix..." id="h2">Ahmedonix...</h2>
+    </div>
+
+    <!-- Main Page -->
+    <div class="main" id="main">
+    <div class="generate" id="look">
+        <div class="container ">
+            <div class="card " style="--clr: #0f0" id="second-card">
+                <div class="form">
+                    <div class="prev_front" id="prev-front">
+                        <div id="content">
+                        <img id="previewProfilePic" src="profile-pic.jpg" alt="Profile Picture">
+                        <h1 id="previewName" contenteditable="true">Ahmed Naseem Qureshi</h1> <!-- Made editable -->
+                        <p id="previewEmail" contenteditable="true">Email: ahmednq.dev@gmail.com</p>
+                        <h3>Education</h3>
+                        <p id="previewEducation" contenteditable="true">Bachelor's Degree in Computer Science - University A (2020)</p>
+                        <h3>Work Experience</h3>
+                <p id="previewWork" contenteditable="true">Software Engineer at Company X (2021-Present)</p>
+                <h3>Skills</h3>
+                <p id="previewSkills" contenteditable="true">JavaScript, TypeScript, Python</p>
+            </div>
+
+                </div>
+                    
+                </div>
+                </div>
+                </div>
+
+        </div>
+
+
+    </div>
+    </div>
+
+ 
+    <script src="script.js"></script>
+
+    <script>
+        let cards= document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.onmousemove = function(e){
+                let x = e.pageX - card.offsetLeft;
+                let y = e.pageY - card.offsetTop;
+
+                card.style.setProperty('--x', x + 'px');
+                card.style.setProperty('--y', y + 'px');
+            }
+        })
+
+        const injectCursorPosition = ({ clientX: x, clientY: y }) => {
+    document.documentElement.style.setProperty('--x', `${x}px`);
+    document.documentElement.style.setProperty('--y', `${y}px`);
+};
+
+// Event listener to update the spotlight position on cursor move
+document.getElementById('main').addEventListener('pointermove', injectCursorPosition);
+
+
+    </script>
+    
+</body>
+</html>
